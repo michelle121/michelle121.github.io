@@ -1,0 +1,27 @@
+项目所需的主要依赖库如下：
+
+python 3.6
+pytorch 1.4
+tensorflow-gpu 1.14
+face-alignment
+dlib
+
+测试
+
+python test.py --photo_path ./images/15.jpg --save_path ./images/15_result.png
+
+训练
+1.数据准备
+
+训练数据包括真实照片和卡通画像，为降低训练复杂度，我们对两类数据进行了如下预处理：
+
+检测人脸及关键点。
+根据关键点旋转校正人脸。
+将关键点边界框按固定的比例扩张并裁剪出人脸区域。
+使用人像分割模型将背景置白。
+
+开源204张处理后的卡通画数据，需准备约1000张人像照片
+（为匹配卡通数据，尽量使用亚洲年轻女性照片，人脸大小最好超过200x200像素）
+使用以下命令进行预处理：
+python data_process.py --data_path YourPhotoFolderPath --save_path YourSaveFolderPath
+
